@@ -1,0 +1,37 @@
+extend ../../layouts/default.pug
+block main 
+    h1 Danh sach san pham
+
+    table.table.table-hover.table-sm 
+        thead 
+            tr
+                th STT 
+                th Hinh anh 
+                th Tieu de 
+                th Gia 
+                th Trang thai 
+                th Hanh dong 
+        
+        tbody 
+            tr 
+                td 1
+                td 
+                    img(src="https://cdn2.cellphones.com.vn/x/media/catalog/product/_/z/_z.jpg", alt="San pham 1",width="100px",height="auto")
+                td San pham 1
+                td 150$
+                td
+                    a(href="#" class="badge badge-danger") Dung hoat dong 
+                td 
+                    button(class="btn btn-warning btn-sm") Sua 
+                    button(class="btn btn-warning btn-sm ml-1") Xoa
+            tr 
+                td 2
+                td 
+                    img(src="https://demobile.vn/wp-content/uploads/2024/10/20.png", alt="San pham 2",width="100px",height="auto")
+                td San pham 2
+                td 250$
+                td
+                    a(href="#" class="badge badge-success") hoat dong 
+                td 
+                    button(class="btn btn-warning btn-sm") Sua 
+                    button(class="btn btn-warning btn-sm ml-1") Xoa
