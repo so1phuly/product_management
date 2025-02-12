@@ -10,12 +10,15 @@ module.exports.products = async (req, res) =>{
         deleted: false
     }
     //Tìm kiếm sản phẩm
-    const keyword = searchProduct(req.query,find)
+    const objectSearch = searchProduct(req.query)
+    if(objectSearch.regex){
+        find.title = objectSearch.regex
+    }
     const products = await Product.find(find)
     res.render("admin/pages/products/index",{
         pageTitle: "Trang san pham",
         products: products,
         filterStatus: filterStatus,
-        keyword: keyword
+        keyword: objectSearch.keyword
     })
 }

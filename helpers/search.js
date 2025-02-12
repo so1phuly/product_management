@@ -1,9 +1,11 @@
-module.exports = (query,find)=>{
-    let keyword = ""
-    if(query.keyword){
-        keyword = query.keyword
-        const regex = new RegExp(keyword, "i")
-        find.title = regex
+module.exports = (query)=>{
+    let objectSearch = {
+        keyword: ""
     }
-    return keyword
+    if(query.keyword){
+        objectSearch.keyword = query.keyword
+        const regex = new RegExp(objectSearch.keyword, "i")
+        objectSearch.regex = regex
+    }
+    return objectSearch
 }
