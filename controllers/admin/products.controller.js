@@ -39,11 +39,20 @@ module.exports.products = async (req, res) =>{
         const index = filterStatus.findIndex(item =>item.status == "")
         filterStatus[index].class="active"
     }
+
+    let keyword = ""
+    if(req.query.keyword){
+        keyword = req.query.keyword
+        const regex = new RegExp(keyword, "i")
+        find.title = regex
+    }
+
     const products = await Product.find(find)
     // console.log(products)
     res.render("admin/pages/products/index",{
         pageTitle: "Trang san pham",
         products: products,
-        filterStatus: filterStatus
+        filterStatus: filterStatus,
+        keyword: keyword
     })
 }
