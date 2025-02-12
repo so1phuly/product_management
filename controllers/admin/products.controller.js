@@ -8,9 +8,6 @@ module.exports.products = async (req, res) =>{
     let find = {
         deleted: false
     }
-    // if(req.query.status){
-    //     find.status = req.query.status
-    // }
     //Tìm kiếm sản phẩm
     let keyword = ""
     if(req.query.keyword){
@@ -19,7 +16,6 @@ module.exports.products = async (req, res) =>{
         find.title = regex
     }
     const products = await Product.find(find)
-    // console.log(products)
     res.render("admin/pages/products/index",{
         pageTitle: "Trang san pham",
         products: products,
