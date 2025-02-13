@@ -1,6 +1,7 @@
 extend ../../layouts/default.pug
 include ../../mixins/filter-status.pug
 include ../../mixins/search-product.pug
+include ../../mixins/paginations.pug
 block main 
     h1 Danh sach san pham
 
@@ -54,3 +55,5 @@ block main
                     //-     td 
                     //-         button(class="btn btn-warning btn-sm") Sua 
                     //-         button(class="btn btn-warning btn-sm ml-1") Xoa
+        
+        +pagination(pagination)

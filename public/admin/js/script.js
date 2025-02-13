@@ -20,7 +20,7 @@ if(buttonsStatus.length > 0){
 
 // Form Search
 const formSearch = document.querySelector("#form-search")
-console.log(formSearch)
+// console.log(formSearch)
 if(formSearch){
     
     let url = new URL(window.location.href)
@@ -36,3 +36,17 @@ if(formSearch){
     })
 }
 // End Form Search
+
+//Phân trang
+const buttonsPagination = document.querySelectorAll("[button-paginantion]")
+if(buttonsPagination){
+    buttonsPagination.forEach(button =>{
+        button.addEventListener("click", ()=>{
+            const page = button.getAttribute("button-paginantion")
+            let url = new URL(window.location.href)
+            url.searchParams.set("page", page)
+            window.location.href = url.href
+        })
+    })
+}
+//hết phân trang
