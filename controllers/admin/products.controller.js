@@ -1,10 +1,8 @@
-//[GET] /admins/product
-
 const Product = require("../../models/product.model")
 const filterStatusHelpers = require("../../helpers/filterStatus")
 const searchProduct = require("../../helpers/search")
 const paginationHelper = require("../../helpers/paginantions")
-
+//[GET] /admins/products
 module.exports.products = async (req, res) =>{
     //Đoạn bộ lọc
     const filterStatus = filterStatusHelpers(req.query);
@@ -28,8 +26,7 @@ module.exports.products = async (req, res) =>{
         },
         req.query,
         countProduct
-    )
-    console.log(objectPagination.skip)  
+    ) 
     //end Phân trang
     const products = await Product.find(find).limit(objectPagination.limitedItem).skip(objectPagination.skip)
     res.render("admin/pages/products/index",{
@@ -39,4 +36,16 @@ module.exports.products = async (req, res) =>{
         keyword: objectSearch.keyword,
         pagination: objectPagination
     })
+}
+//[GET] /admins/products/change-status/:status/:id
+module.exports.changeStatus = async (req, res) =>{
+    const statusChange = req.params.status
+    const id = req.params.id
+    // console.log(statusChange)
+    // console.log(id)
+    await Product.updateOne({ _id: id }, { status: statusChange })
+
+    // res.send(`${statusChange} - ${id}`)
+    // res.redirect('/admin/products') hàm này quay trở lại 1 trang mặc định
+    res.redirect("back")
 }
