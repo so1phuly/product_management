@@ -8,8 +8,10 @@ mixin form-change-status(path)
         .d-flex.align-items-start
             .form-group
                 select(name="type" class="form-control")
+                    option(disabled selected value="default") ---Lựa chọn---
                     option(value="active") Hoạt động
                     option(value="inactive") Dừng hoạt động
+                    option(value="delete-all") Xóa
             .form-group
                 input(
                 type="text"

@@ -89,7 +89,19 @@ if(formChangeMulti){
         e.preventDefault()
         const checkboxMulti= document.querySelector("[checkbox-multi]")
         const inputChecked = checkboxMulti.querySelectorAll("input[name='id']:checked")
+
+        const typeInput = e.target.elements.type.value
+        if(typeInput === "default"){
+            alert("Vui lòng chọn chức năng")
+            return
+        }
         if(inputChecked.length > 0){
+            if(typeInput == "delete-all"){
+                const isCofirm = confirm("Bạn có chắc chắn muốn xóa những sản phẩm này?")
+                if(!isCofirm){
+                    return
+                }
+            }
             let ids = []
             const inputIds = formChangeMulti.querySelector("input[name='ids']")
             inputChecked.forEach(input =>{
