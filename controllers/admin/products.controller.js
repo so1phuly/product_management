@@ -2,6 +2,7 @@ const Product = require("../../models/product.model")
 const filterStatusHelpers = require("../../helpers/filterStatus")
 const searchProduct = require("../../helpers/search")
 const paginationHelper = require("../../helpers/paginantions")
+const { query } = require("express")
 //[GET] /admins/products
 module.exports.products = async (req, res) =>{
     //Đoạn bộ lọc
@@ -18,7 +19,9 @@ module.exports.products = async (req, res) =>{
         find.title = objectSearch.regex
     }
     //Phân trang
-    const countProduct = await Product.countDocuments()
+    
+    const countProduct = await Product.countDocuments(find)
+    console.log(countProduct)
     let objectPagination = paginationHelper(
         {
         limitedItem: 4,
