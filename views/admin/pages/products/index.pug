@@ -27,11 +27,12 @@ block main
                         th 
                             input(type="checkbox" name="checkAll")
                         th STT 
-                        th Hinh anh 
-                        th Tieu de 
-                        th Gia 
-                        th Trang thai 
-                        th Hanh dong 
+                        th Hình ảnh 
+                        th Tiêu đề 
+                        th Giá 
+                        th Vị trí
+                        th Trạng thái 
+                        th Hành động 
                 
                 tbody 
                     each item, index in products
@@ -47,6 +48,14 @@ block main
                                 img(src=item.thumbnail, alt=item.title,width="100px",height="auto")
                             td #{item.title}
                             td #{item.price}$
+                            td 
+                                input(
+                                    type="number"
+                                    value=item.position
+                                    style="width: 60px"
+                                    min="1"
+                                    name="position"
+                                    )
                             td 
                                 if (item.status == "active")
 
