@@ -40,7 +40,7 @@ module.exports.products = async (req, res) =>{
         pagination: objectPagination
     })
 }
-//[GET] /admins/products/change-status/:status/:id
+//[Patch] /admins/products/change-status/:status/:id
 module.exports.changeStatus = async (req, res) =>{
     const statusChange = req.params.status
     const id = req.params.id
@@ -50,5 +50,24 @@ module.exports.changeStatus = async (req, res) =>{
 
     // res.send(`${statusChange} - ${id}`)
     // res.redirect('/admin/products') hàm này quay trở lại 1 trang mặc định
+    res.redirect("back")
+}
+
+//[Patch] /admins/products/change-multi
+module.exports.changeMulti = async (req, res) =>{
+    const type = req.body.type
+    const ids= req.body.ids.split(", ")
+
+    switch(type){
+        case "active":
+            await Product.updateMany( {_id: { $in: ids}}, { status: "active"})
+            break;
+        case "inactive":
+            await Product.updateMany( {_id: { $in: ids}}, { status: "inactive"})
+            break;
+        default:
+            break;
+    }
+
     res.redirect("back")
 }

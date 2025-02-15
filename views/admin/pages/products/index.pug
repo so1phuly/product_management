@@ -2,6 +2,7 @@ extend ../../layouts/default.pug
 include ../../mixins/filter-status.pug
 include ../../mixins/search-product.pug
 include ../../mixins/paginations.pug
+include ../../mixins/form-change-status.pug
 block main 
     h1 Danh sach san pham
 
@@ -15,10 +16,16 @@ block main
                     +form-search(keyword)
     .card.mb-3 
         .card-header Danh sách sản phẩm
-            .card-body 
-            table.table.table-hover.table-sm 
+            .card-body
+                +form-change-status(`${prefixAdmin}/products/change-multi?_method=PATCH`)
+            table(
+                class="table table-hover table-sm "
+                checkbox-multi
+            )
                 thead 
                     tr
+                        th 
+                            input(type="checkbox" name="checkAll")
                         th STT 
                         th Hinh anh 
                         th Tieu de 
@@ -28,12 +35,18 @@ block main
                 
                 tbody 
                     each item, index in products
-                        tr 
+                        tr
+                            td 
+                                input(
+                                    type="checkbox"
+                                    name="id"
+                                    value=item.id
+                                    ) 
                             td #{index + 1}
                             td 
                                 img(src=item.thumbnail, alt=item.title,width="100px",height="auto")
                             td #{item.title}
-                            td #{item.price}
+                            td #{item.price}$
                             td 
                                 if (item.status == "active")
 
