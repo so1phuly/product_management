@@ -1,4 +1,5 @@
 const express = require('express')
+const multer = require('multer')
 const methodOverride = require('method-override')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
