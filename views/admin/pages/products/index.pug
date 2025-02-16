@@ -3,9 +3,10 @@ include ../../mixins/filter-status.pug
 include ../../mixins/search-product.pug
 include ../../mixins/paginations.pug
 include ../../mixins/form-change-status.pug
+include ../../mixins/alert.pug
 block main 
     h1 Danh sach san pham
-
+    +alert-success(5000)
     .card.mb-3 
         .card-header Bộ lọc tìm kiếm 
         .card-body 
