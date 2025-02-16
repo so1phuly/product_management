@@ -73,7 +73,7 @@ block main
                                      data-id=item.id
                                      button-change-status
                                      class="badge badge-success"
-                                     ) hoat dong 
+                                     ) Hoạt động 
                                 else 
 
                                     a(href="javascript:;" 
@@ -81,16 +81,19 @@ block main
                                     data-id=item.id
                                     button-change-status 
                                     class="badge badge-danger"
-                                    ) Dung hoat dong  
-                            td 
+                                    ) Dừng hoạt động  
+                            td
+                                a(
+                                    href=`${prefixAdmin}/products/detail/${item.id}`
+                                    class="btn btn-secondary btn-sm") Chi tiết 
                                 a(
                                     href=`${prefixAdmin}/products/edit/${item.id}`
-                                    class="btn btn-warning btn-sm") Sua 
+                                    class="btn btn-warning btn-sm") Sửa 
                                 button(
                                     class="btn btn-danger btn-sm ml-1"
                                     button-delete
                                     data-id=item.id 
-                                    ) Xoa
+                                    ) Xóa
                     //- tr 
                     //-     td 2
                     //-     td 
