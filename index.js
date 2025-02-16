@@ -24,14 +24,14 @@ app.use(flash());
 
 app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: false }))
-app.set('views', './views')
+app.set('views', `${__dirname}/views`)
 app.set('view engine', 'pug')
 
 //App Locals Variables
 const sytemconfig = require("./config/system")
 app.locals.prefixAdmin = sytemconfig.prefixAdmin
 
-app.use(express.static("public"))
+app.use(express.static(`${__dirname}/public`))
 
 routeClient(app)
 routeAdmin(app)
