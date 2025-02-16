@@ -14,3 +14,23 @@ module.exports.index = async(req, res) => {
         products: newProducts
     })
 }
+
+
+//[GET] /admins/products/detail/:id
+module.exports.detail = async (req, res) => {
+    try {
+        let find = {
+            deleted: false,
+            slug: req.params.slug,
+            status: "active"
+        }
+        const product = await Product.findOne(find)
+        console.log(product)
+        res.render("client/pages/products/detail", {
+            pageTitle: "Chi tiết sản phẩm",
+            product: product
+        })
+    } catch (error) {
+        res.redirect(`/products`)   
+    }
+}
