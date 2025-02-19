@@ -4,6 +4,7 @@ include ../../mixins/search-product.pug
 include ../../mixins/paginations.pug
 include ../../mixins/form-change-status.pug
 include ../../mixins/alert.pug
+include ../../mixins/sort.pug
 block main 
     h1 Danh sách sản phẩm
     +alert-success(5000)
@@ -15,6 +16,12 @@ block main
                     +filter-Status(filterStatus)
                 .col-6 
                     +form-search(keyword)
+    .card.mb-3
+        .card-header Sắp xếp
+        .card-body
+            .row
+                .col-4
+                    +sort()
     .card.mb-3 
         .card-header Danh sách sản phẩm
             .card-body
@@ -26,7 +33,6 @@ block main
                             href= `${prefixAdmin}/products/create`
                             class="btn btn-outline-success"
                         ) + Thêm mới
-            
             table(
                 class="table table-hover table-sm "
                 checkbox-multi

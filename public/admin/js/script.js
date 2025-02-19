@@ -153,3 +153,38 @@ if(uploadImage){
     })
 }
 // end upload img
+
+//sort
+ const sort = document.querySelector("[sort]")
+ if(sort){
+    const sortSelect = sort.querySelector("[sort-select]")
+    const sortClear = sort.querySelector("[sort-clear]")
+    let url = new URL(window.location.href)
+    sortSelect.addEventListener("change", (e)=>{
+        const value = e.target.value
+        let [sortKey, sortValue] = value.split("-")
+        url.searchParams.set("sortKey", sortKey)
+        url.searchParams.set("sortValue", sortValue)
+        window.location.href = url.href
+    })
+    sortClear.addEventListener("click", ()=>{
+        console.log(url)
+        url.searchParams.delete("sortKey")
+        url.searchParams.delete("sortValue")
+        window.location.href = url.href
+    })
+ }
+
+//end sort
+
+//thêm selected cho option
+const sortKey = url.searchParams.get("sortKey")
+const sortValue = url.searchParams.get("sortValue")
+
+if(sortKey && sortValue){
+    const stringSort = `${sortKey}-${sortValue}`
+    const optionSelected = sort.querySelector(`option[value='${stringSort}']`)
+    optionSelected.selected = true
+}
+
+// end thêm selected cho option
