@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path')
 const multer = require('multer')
 const methodOverride = require('method-override')
 const bodyParser = require('body-parser')
@@ -26,6 +27,10 @@ app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.set('views', `${__dirname}/views`)
 app.set('view engine', 'pug')
+
+// Tiny MCE
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
+// End Tiny MCE
 
 //App Locals Variables
 const sytemconfig = require("./config/system")
